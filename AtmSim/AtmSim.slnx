@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../AtmApi/AtmApi.csproj" Id="b2d95915-1f92-4d11-b31e-93915b143696" />
+  <Project Path="AtmSim.csproj" />
+</Solution>
