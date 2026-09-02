@@ -1,4 +1,6 @@
-﻿Change in future would be to make this into a api and a database in postgress
+﻿Had problems with git Reminder to self do it correctly at the start makes life easyer.
+
+Change in future would be to make this into a api and a database in postgress
 .
 
 

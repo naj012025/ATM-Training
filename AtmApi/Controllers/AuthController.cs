@@ -1,6 +1,5 @@
-﻿namespace AtmApi.Controllers:
+﻿namespace AtmApi.Controllers;
+
+public class AuthController
 {
-    public class AuthController
-{
-}
 }
