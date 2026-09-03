@@ -59,7 +59,7 @@ public sealed class BankAccount
     }
 
     //resets the counter when succsefull loggin.
-    public void ResetFailsPinAttamptes()
+    public void ResetFailsPinAttempts()
     {
         FailedPinAttempts = 0;
     }

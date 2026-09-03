@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AtmApi.DTO;
+namespace AtmApi.DTO.Accounts;
 
 public class AccountDto
 {
@@ -13,7 +13,7 @@ public class AccountDto
 
     public sealed class AccountResponse
     {
-        public string AccountNumber { get; init } = string.Empty;
+        public string AccountNumber { get; init; } = string.Empty;
         public decimal Balance { get; init; }
     }
 

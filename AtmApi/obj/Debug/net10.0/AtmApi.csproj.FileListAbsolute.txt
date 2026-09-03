@@ -131,3 +131,8 @@ C:\Users\Jimni\Documents\Kodehode\Oppgaver\Games\Atm\AtmApi\obj\Debug\net10.0\re
 C:\Users\Jimni\Documents\Kodehode\Oppgaver\Games\Atm\AtmApi\obj\Debug\net10.0\AtmApi.pdb
 C:\Users\Jimni\Documents\Kodehode\Oppgaver\Games\Atm\AtmApi\obj\Debug\net10.0\AtmApi.genruntimeconfig.cache
 C:\Users\Jimni\Documents\Kodehode\Oppgaver\Games\Atm\AtmApi\obj\Debug\net10.0\ref\AtmApi.dll
+C:\Users\Jimni\Documents\Kodehode\Oppgaver\Games\Atm\AtmApi\bin\Debug\net10.0\AtmSim.deps.json
+C:\Users\Jimni\Documents\Kodehode\Oppgaver\Games\Atm\AtmApi\bin\Debug\net10.0\AtmSim.runtimeconfig.json
+C:\Users\Jimni\Documents\Kodehode\Oppgaver\Games\Atm\AtmApi\bin\Debug\net10.0\AtmSim.exe
+C:\Users\Jimni\Documents\Kodehode\Oppgaver\Games\Atm\AtmApi\bin\Debug\net10.0\AtmSim.dll
+C:\Users\Jimni\Documents\Kodehode\Oppgaver\Games\Atm\AtmApi\bin\Debug\net10.0\AtmSim.pdb
