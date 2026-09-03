@@ -831,6 +831,16 @@
             "related": ".xml"
           }
         }
+      },
+      "AtmSim/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/AtmSim.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AtmSim.dll": {}
+        }
       }
     }
   },
@@ -2607,10 +2617,16 @@
         "system.identitymodel.tokens.jwt.8.19.2.nupkg.sha512",
         "system.identitymodel.tokens.jwt.nuspec"
       ]
+    },
+    "AtmSim/1.0.0": {
+      "type": "project",
+      "path": "../AtmSim/AtmSim.csproj",
+      "msbuildProject": "../AtmSim/AtmSim.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "AtmSim >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 10.0.11",
       "Microsoft.AspNetCore.OpenApi >= 10.0.11",
       "Microsoft.EntityFrameworkCore.Design >= 10.0.11",
@@ -2650,7 +2666,11 @@
         "net10.0": {
           "framework": "net10.0",
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Jimni\\Documents\\Kodehode\\Oppgaver\\Games\\Atm\\AtmSim\\AtmSim.csproj": {
+              "projectPath": "C:\\Users\\Jimni\\Documents\\Kodehode\\Oppgaver\\Games\\Atm\\AtmSim\\AtmSim.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
