@@ -1,7 +1,4 @@
-﻿namespace AtmApi.DTO.Auth;
-
-
-
+﻿namespace AtmApi.DTO;
 
 public sealed class LoginRequest
 {

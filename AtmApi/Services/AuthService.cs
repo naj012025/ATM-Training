@@ -1,5 +1,5 @@
 ﻿using AtmApi.Data;
-using AtmApi.DTO.Auth;
+using AtmApi.DTO;
 using AtmApi.Security;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,11 +23,12 @@ public sealed class AuthService(
 
         if (!pinHasher.VerifyPin(request.Pin, account.PinHash))
         {
+            //had spelling errors in bankaccount.cs fixed
             account.RegisterFailedAttempts();
             await db.SaveChangesAsync();
             return null;
         }
-
+        // Had Spelling erros in the name of reset.bankaccount.cs fixed
         account.ResetFailsPinAttempts();
         await db.SaveChangesAsync();
 
