@@ -9,12 +9,27 @@
     ports:
       - "5432:5432"
     volumes:
-      - atm_postgres_data:/var/lib/postgresql/data
+      - atm_postgres_data:/var/lib/postgresql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U atm_user -d atm_db"]
+      test: ["CMD-SHELL", "pg_isready -U admin -d atm_db"]
       interval: 5s
       timeout: 5s
       retries: 10
+      start_period: 10s
+    restart: unless-stopped
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: atm-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: Admin
+    ports:
+      - "5050:80"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
 
 volumes:
   atm_postgres_data:
