@@ -1,4 +1,4 @@
-AtmSimumlort that has been turned into a api using scalar 
+AtmSimulor that has been turned into a api using scalar 
 planning to add in new account registration something like that 
 and training on making tests for this type of programm not TestDriven but Testafter.
 
