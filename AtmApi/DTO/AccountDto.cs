@@ -5,7 +5,7 @@ namespace AtmApi.DTO;
 public sealed class AmountRequest
 {
     //limited to 1 million max per request ?
-    [Range(typeof(decimal), "0.01", "1000000")]
+    [Range(typeof(decimal), "0,01", "1000000")]
     public decimal Amount { get; init; }
 }
 
