@@ -56,12 +56,10 @@ public sealed class AtmApiFactory : WebApplicationFactory<Program>
         });
 
     }
-
-
     public async Task SeedAccountAsync(
-        string accountNumber,
-        string pin,
-        decimal openingBalance)
+    string accountNumber,
+    string pin,
+    decimal openingBalance)
     {
         using IServiceScope scope = Services.CreateScope();
 
@@ -79,4 +77,6 @@ public sealed class AtmApiFactory : WebApplicationFactory<Program>
 
         await db.SaveChangesAsync();
     }
+
+
 }
