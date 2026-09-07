@@ -88,6 +88,8 @@ app.MapControllers();
 
 app.Run();
 
+public partial class Program { }
+
 
 internal sealed class BearerSecuritySchemeTransformer(
     IAuthenticationSchemeProvider authenticationSchemeProvider)
