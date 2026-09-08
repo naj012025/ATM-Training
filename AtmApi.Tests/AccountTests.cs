@@ -60,12 +60,12 @@ public sealed class AccountTests :
     {
         //Arrange
         await _factory.SeedAccountAsync(
-            "20001",
+            "20002",
             "1234",
             1000m);
         LoginRequest request = new()
         {
-            AccountNumber = "20001",
+            AccountNumber = "20002",
             Pin = "4567" //wrong Pin.
         };
         //Act
@@ -105,13 +105,67 @@ public sealed class AccountTests :
             "20003",
             "1234",
             1000m);
-        string token =
-            await LoginAsync(
-                "20003", "1234");
-        UseBearer(token);
-        //Act
+        //this creates a new client 
+        HttpClient client = _factory.CreateClient();
 
+        string token =
+            await LoginAsync("20003", "1234");
+        //added client here after change to use bearer.
+        UseBearer(client, token);
+
+
+        //Act
+        HttpResponseMessage response =
+            await client.GetAsync(
+                "api/accounts/me");
         //Assert
+        Assert.Equal(
+            HttpStatusCode.OK,
+            response.StatusCode);
+        AccountResponse? account =
+            await response.Content.ReadFromJsonAsync<AccountResponse>();
+        //Had a issue with token here fixed by changing the token from 
+        //private _client to client and change the bearer to create a new client for tests
+
+        Assert.NotNull(account);
+        Assert.Equal("20003", account.AccountNumber);
+        Assert.Equal(1000m, account.Balance);
+
+    }
+
+    [Fact]
+    public async Task Deposit_WithValidAmount_IncreaseBalance()
+    {
+        //Arrange
+        await _factory.SeedAccountAsync(
+            "20004",
+            "1234",
+            2500m);
+        //Had a error here where i wrote new() instead of factory.Createclient.
+        //wich cause it to make a new httpclient but not one who knows the url.
+        HttpClient client = _factory.CreateClient();
+        string token = await LoginAsync("20004", "1234");
+
+        UseBearer(client, token);
+
+        AmountRequest request = new()
+        {
+            Amount = 25000m
+        };
+        //Act
+        HttpResponseMessage depositResponse =
+             await client.PostAsJsonAsync(
+                 "api/accounts/me/deposits",
+                 request);
+        //Assert
+        Assert.True(
+            depositResponse.IsSuccessStatusCode);
+
+        AccountResponse? account =
+            await client.GetFromJsonAsync<AccountResponse>(
+                "api/accounts/me");
+        Assert.NotNull(account);
+        Assert.Equal(27500m, account.Balance);
     }
 
 

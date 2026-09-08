@@ -40,9 +40,9 @@ public abstract class AtmApiIntegrationTestBase
         return login.AccessToken;
     }
 
-    protected void UseBearer(string token)
+    protected static void UseBearer(HttpClient client, string token)
     {
-        _client.DefaultRequestHeaders.Authorization =
+        client.DefaultRequestHeaders.Authorization =
             new AuthenticationHeaderValue("Bearer", token);
     }
 
