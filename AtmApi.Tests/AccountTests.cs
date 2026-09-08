@@ -2,6 +2,7 @@
 using AtmApi.DTO;
 using AtmApi.Models;
 using AtmApi.Tests;
+using Microsoft.AspNetCore.Http.HttpResults;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -158,14 +159,50 @@ public sealed class AccountTests :
                  "api/accounts/me/deposits",
                  request);
         //Assert
-        Assert.True(
-            depositResponse.IsSuccessStatusCode);
-
         AccountResponse? account =
             await client.GetFromJsonAsync<AccountResponse>(
                 "api/accounts/me");
         Assert.NotNull(account);
         Assert.Equal(27500m, account.Balance);
+        //More robust with correct status code response.
+        Assert.Equal(HttpStatusCode.OK,
+            depositResponse.StatusCode);
+    }
+    [Fact]
+    public async Task Withdraw_MoreThanIsAvailable_IsRejected()
+    {
+        //Arrange
+        await _factory.SeedAccountAsync(
+            "20005",
+            "1234",
+            2000m);
+
+        HttpClient client = _factory.CreateClient();
+
+        string token = await LoginAsync("20005", "1234");
+
+        UseBearer(client, token);
+
+        AmountRequest request = new()
+        {
+            Amount = 3000m
+        };
+        //Act
+
+        HttpResponseMessage response =
+          await client.PostAsJsonAsync(
+            "/api/accounts/me/withdrawals",
+            request);
+
+        //Assert
+        AccountResponse? account =
+            await client.GetFromJsonAsync<AccountResponse>(
+                "api/accounts/me");
+        Assert.NotNull(account);
+        Assert.Equal(2000m, account.Balance);
+        Assert.Equal(HttpStatusCode.BadRequest,
+            response.StatusCode);
+
     }
 
 
