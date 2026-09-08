@@ -131,3 +131,5 @@ C:\Users\Jimni\Documents\Kodehode\Oppgaver\Games\Atm\AtmApi\obj\Debug\net10.0\re
 C:\Users\Jimni\Documents\Kodehode\Oppgaver\Games\Atm\AtmApi\obj\Debug\net10.0\AtmApi.pdb
 C:\Users\Jimni\Documents\Kodehode\Oppgaver\Games\Atm\AtmApi\obj\Debug\net10.0\AtmApi.genruntimeconfig.cache
 C:\Users\Jimni\Documents\Kodehode\Oppgaver\Games\Atm\AtmApi\obj\Debug\net10.0\ref\AtmApi.dll
+C:\Users\Jimni\Documents\Kodehode\Oppgaver\Games\Atm\AtmApi\bin\Debug\net10.0\AtmApi.Tests\obj\AtmApi.Tests.csproj.nuget.dgspec.json
+C:\Users\Jimni\Documents\Kodehode\Oppgaver\Games\Atm\AtmApi\bin\Debug\net10.0\AtmApi.Tests\obj\project.assets.json

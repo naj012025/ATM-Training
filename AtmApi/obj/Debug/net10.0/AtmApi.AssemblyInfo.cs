@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AtmApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0897c2fc30e569022665db6d98c444e1f48496ba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+df9f6f60b081be1bc17fb1f9119d700ea5603165")]
 [assembly: System.Reflection.AssemblyProductAttribute("AtmApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AtmApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -7,18 +7,18 @@ using System.Net.Http.Json;
 
 namespace AtmApi.Tests;
 
-public sealed class AtmApiIntegrationTests : IClassFixture<AtmApiFactory>
+public abstract class AtmApiIntegrationTestBase
 {
-    private readonly AtmApiFactory _factory;
-    private readonly HttpClient _client;
+    protected readonly AtmApiFactory _factory;
+    protected readonly HttpClient _client;
 
-    public AtmApiIntegrationTests(AtmApiFactory factory)
+    protected AtmApiIntegrationTestBase(AtmApiFactory factory)
     {
         _factory = factory;
         _client = factory.CreateClient();
     }
 
-    private async Task<string> LoginAsync(string accountNumber, string pin)
+    public async Task<string> LoginAsync(string accountNumber, string pin)
     {
         LoginRequest request = new()
         {
@@ -40,7 +40,7 @@ public sealed class AtmApiIntegrationTests : IClassFixture<AtmApiFactory>
         return login.AccessToken;
     }
 
-    private void UseBearer(string token)
+    protected void UseBearer(string token)
     {
         _client.DefaultRequestHeaders.Authorization =
             new AuthenticationHeaderValue("Bearer", token);
