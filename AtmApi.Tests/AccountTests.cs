@@ -205,5 +205,119 @@ public sealed class AccountTests :
 
     }
 
+    [Fact]
+    public async Task Transactions_AfterDepositAndWhitdrawal_ReturnsBoth()
+    {
+        //Arrange
+        await _factory.SeedAccountAsync(
+            "20006",
+            "1234",
+            2000m);
+
+        HttpClient client = _factory.CreateClient();
+
+        string token =
+            await LoginAsync("20006", "1234");
+
+        UseBearer(client, token);
+
+        await client.PostAsJsonAsync(
+            "/api/accounts/me/withdrawals/",
+        new AmountRequest { Amount = 400m });
+
+        await client.PostAsJsonAsync(
+            "/api/accounts/me/deposits/",
+            new AmountRequest { Amount = 500M });
+
+        //Act
+        TransactionResponse[]? transactions =
+            await client.GetFromJsonAsync<TransactionResponse[]>
+            ("/api/accounts/me/transactions");
+
+        //Assert
+        Assert.NotNull(transactions);
+        //Had A fail her becose i wrote it in plural not singular
+        //transaction tok away s on both types and it worked.
+        //Also added in BalanceAfter for a regression safety that it records
+        //updatet balance.
+        Assert.Contains(transactions,
+            x => x.Type == "Withdrawal"
+            && x.Amount == 400m
+            && x.BalanceAfter == 1600m);
+
+        Assert.Contains(transactions,
+            x => x.Type == "Deposit"
+            && x.Amount == 500M
+            && x.BalanceAfter == 2100M);
+    }
+
+    [Fact]
+    public async Task Deposits_WithZeroAmount_ReturnsBadRequest()
+    {
+        //Arrange
+        await _factory.SeedAccountAsync(
+            "20007",
+            "1234",
+            2000m);
+        HttpClient client = _factory.CreateClient();
+
+        string token =
+           await LoginAsync("20007", "1234");
+        UseBearer(client, token);
+
+        //Act
+        HttpResponseMessage response =
+            await client.PostAsJsonAsync(
+                "/api/accounts/me/deposits",
+                new AmountRequest { Amount = 0m });
+        //Assert
+        Assert.Equal(
+            HttpStatusCode.BadRequest,
+            response.StatusCode);
+    }
+
+
+
+    [Fact]
+    public async Task GetMe_TokenForAccounts_ReturnsOnlyAccountA()
+    {
+        //Important tests so users cant get wrong token and accses
+        //Others account. if this fails shut it down;P.
+        //Arrange
+        await _factory.SeedAccountAsync(
+            "20008",
+            "1234",
+            2500m);
+
+        await _factory.SeedAccountAsync(
+            "20009",
+            "5678",
+            1337m);
+
+        HttpClient client = _factory.CreateClient();
+
+        string token =
+            await LoginAsync("20008", "1234");
+
+        UseBearer(client, token);
+
+        //Act
+        AccountResponse? account =
+            await client.GetFromJsonAsync<AccountResponse>(
+                "/api/accounts/me");
+        //Assert
+        Assert.NotNull(account);
+        Assert.Equal("20008", account.AccountNumber);
+        Assert.Equal(2500m, account.Balance);
+
+    }
+
+
+
+
+
+
+
+
 
 }
