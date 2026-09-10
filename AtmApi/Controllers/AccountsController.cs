@@ -60,8 +60,16 @@ public sealed class AccountsController(AccountService accountService) : Controll
         return Ok(await accountService.GetTransactionsAsync(GetAccountId()));
     }
 
+    //private int GetAccountId()
+    //{
+    //    string? accountId =
+    //        User.FindFirstValue(
+    //            ClaimTypes.NameIdentifier);
+    //    return int.Parse(accountId!);
+    //}
 
-
+    //safer version since it does not have a ! meaning trust me bro 
+    //its not null.
     private int GetAccountId()
     {
         string value = User.FindFirstValue(ClaimTypes.NameIdentifier)
