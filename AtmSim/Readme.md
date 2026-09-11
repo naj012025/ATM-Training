@@ -1,70 +1,24 @@
-﻿Had problems with git Reminder to self do it correctly at the start makes life easyer.
+﻿This Project simulates a Atm, Deposits/Withdraw/TransactionHistory/authentication/Pin/pinhashing.
 
-Change in future would be to make this into a api and a database in postgress
-.
+During this project i learned alot of new syntax and errors that needed to be fixed alon the way 
 
+I turned this into a api version also wich was super informative and also in the end i connected it 
+to a another api made before todolistapirecreate1 to learn how to connect api togheter 
+atmsim is the main provider of token that is gonna be accepted into todolistapi,
 
-###TempCode to seed Data###
-//PasswordHasher hasher = new();
-//AccountRepo repository = new();
+Hadd alot of issuses making the program.cs be correct in apirecreatet it used to use swagger 
+but changed it over to scalar so its the same as atm i used chatgpt in the end to clean it up in program.cs
 
-//List<BankAccountData> accounts =
-//    [
-//        new()
-//        {
-//            AccountNumber= "10001",
-//            PinHash = hasher.HashPin("1234"),
-//            Balance = 500m
-//        },
-//        new()
-//        {
-//            AccountNumber = "10002",
-//            PinHash = hasher.HashPin("4567"),
-//            Balance = 2000m
-//        }
-//     ];
-//repository.SavedAccounts(accounts);
+Had issues authorizing in todo list and it was becuse when i entered the qutoes on the token it became invalid 
+use alot of time trying to figure this small mistake out but learned alot along the way about jwt loggin and troubleshooting
 
-#########################################################
+it is complete for the moment but i plan to combine the Database so i can see both todo and bankaccount info at the same time.
 
-13. Improvement Tips - Next Iteration
-Once the core simulator is stable, improve it in this order rather than adding features randomly.
-Priority Improvement Why it matters
-1 xUnit tests for Deposit/Withdraw Protects the financial rules from
-regressions. Test zero, negative,
-exact balance, and insufficient
-funds.
-2 Separate AuthenticationService Moves account/PIN verification out
-of Program.cs and keeps the UI
-thin.
-3 Async file I/O Use
-ReadAllTextAsync/WriteAllTextAsy
-nc to practice modern I/O patterns;
-useful if persistence grows.
-4 Transaction history Add Transaction records with type,
-amount, UTC timestamp, and
-resulting balance.
-5 Atomic/safer persistence Write to a temporary file and
-replace the original to reduce
-corruption risk if a save is
-interrupted.
-6 Culture-aware money
-parsing/formatting
-Control NOK display and decimal
-separators explicitly rather than
-depending blindly on machine
-culture.
-7 Lockout state Persist failed attempts / lockeduntil time if you want login
-protection to survive app restarts.
-8 Dependency Injection After services are separated, inject
-repository/hasher dependencies
-instead of constructing them
-everywhere.
-9 Database upgrade Replace JSON with
-SQLite/PostgreSQL only after the
-domain and repository boundary
-are stable.
-10 API version Expose the same domain through
-ASP.NET Core later. The
-BankAccount rules should survive
-without being rewritten.
+Learne a horrible mistake can be done with docker compose down at that was -v deletes ur db i had atmapi with lots of different
+account seeded so i needed to recreate the first seed .
+
+And finaly in todolistapirecreate1 horrible name i know. but when switching from swagger to scaler
+after unninstalling the packages i need to doublecheck in xml that ref is gone for swagger info.
+
+and clean/restore/build after. that solved loads of jwtbearer using issuse ghost refrence.
+
