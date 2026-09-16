@@ -1,10 +1,20 @@
 ﻿This Project simulates a Atm, Deposits/Withdraw/TransactionHistory/authentication/Pin/pinhashing.
 
-During this project i learned alot of new syntax and errors that needed to be fixed alon the way 
+Update 16.09.26: i adde the function so i can see todolist entries and transaction update on one site this case just the todolistapirecreatet1 scalar site
+the databases does not mix.
 
-I turned this into a api version also wich was super informative and also in the end i connected it 
+today was just so i learned how to make them both visible on one site.
+Had issues in appsettings.json in todolist that it was on the wrong port https vs http.
+and a issue i made the dashbord inside the scope of something else i thought i did it outside tok som time to find that error in program.cs.
+learned some new things in dto/service and what a dashboard is.
+#############################################################################################################################################################3
+
+During this project i learned alot of new syntax and errors that needed to be fixed along the way 
+
+I turned this into a api version also it was super informative and also in the end i connected it 
 to a another api made before todolistapirecreate1 to learn how to connect api togheter 
 atmsim is the main provider of token that is gonna be accepted into todolistapi,
+
 
 Hadd alot of issuses making the program.cs be correct in apirecreatet it used to use swagger 
 but changed it over to scalar so its the same as atm i used chatgpt in the end to clean it up in program.cs
